@@ -1,7 +1,7 @@
 # 1 analise
 # verifica se pode isentar o preço da pensagem com base na idade
 # 2 definição
-# colocar idade especificada em anos
+# colocar idade especificada em anos, saira um valo
 # 3 especificação
 def isento_tarifa(idade: int) -> bool:
     """
@@ -21,3 +21,27 @@ def isento_tarifa(idade: int) -> bool:
     True
     """
     return 17 >= idade or idade >= 65
+
+
+# 1 analise
+# transforma a data de padrão dia/mes/ano e um formato de ano/mes/dia
+# 2 definição
+# uma string organizada por dia/mes/ano e vai sair uma string ano/mes/dia
+# 3 especificação
+def dma_para_amd(data: str) -> str:
+    """
+    Transforma *data*, que deve estar no formato "dia/mes/ano",
+    onde dia e mes tem dois dígitos e ano tem quatro dígitos,
+    para o formato "ano/mes/dia".
+    Exemplos:
+    >>>dma_para_amd('02/07/1999')
+    1999/07/02
+    >>>dma_para_amd('09/03/2003')
+    2003/03/09
+    >>>dma_para_amd('20/09/2077')
+    2077/09/20
+    """
+    dia: str = data[:3]
+    mes: str = data[4:6]
+    ano: str = data[6:]
+    return ano + "/" + mes + "/" + dia
