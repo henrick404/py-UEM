@@ -37,8 +37,8 @@ def dma_para_amd(data: str) -> str:
     >>>dma_para_amd('20/09/2077')
     2077/09/20
     """
-    dia: str = data[:3]
-    mes: str = data[4:6]
+    dia: str = data[:2]
+    mes: str = data[3:5]
     ano: str = data[6:]
     return ano + "/" + mes + "/" + dia
 
