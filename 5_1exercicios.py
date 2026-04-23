@@ -35,3 +35,39 @@ def peso_ideal(sexo: Genero, altura: float) -> float:
     return round(peso, 1)
 
 #-------------------------------------------------
+# Analise
+# Descobrir se um número é positivo, negativo ou nulo
+# Tipos de dados
+# dados a receber: um número do tipo int
+# dados devolvidos: tipo do numero positivo, negativo ou nulo
+
+from enum import Enum, auto
+
+class Valor(Enum):
+    "se é positivo negatipo ou nulo"
+
+    POSITIVO = auto()
+    NEGATIVO = auto()
+    NULO = auto()
+
+def sinal(numero: int) -> Valor:
+    """
+    Descobre se um *numero* é negativo, positivo ou nulo
+    Exemplos:
+    >>> sinal(1).name
+    'POSITIVO'
+    >>> sinal(-1).name
+    'NEGATIVO'
+    >>> sinal(0).name
+    'NULO'
+    """
+    if numero > 0:
+        sinal: Valor = Valor.POSITIVO
+    elif numero < 0:
+        sinal: Valor = Valor.NEGATIVO
+    else:
+        sinal: Valor = Valor.NULO
+
+    return sinal
+
+# -------------------------------------------------
