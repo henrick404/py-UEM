@@ -71,3 +71,31 @@ def sinal(numero: int) -> Valor:
     return sinal
 
 # -------------------------------------------------
+# Analise
+# Descobrir o valor total de uma compra
+# Tipos de dados
+# dados a receber: o código do produto do tipo Codigo, e a quantidade do tipo int
+# dados devolvidos: valor total da compra em float
+
+from enum import Enum, auto
+
+class Codigo(Enum):
+    C1001 = Auto()
+    C1324 = Auto()
+    C6548 = Auto()
+    C2987 = Auto()
+    C7623 = Auto()
+
+def valor_total(codigo: Codigo, quantia: int) -> float:
+    '''
+    Calcula o valor de uma compra com base no preço do produto e com base na *quantia*
+    Exemplos:
+    >>> valor_total(Codigo.C1001,5)
+    26.6
+    >>> valor_total(Codigo.C1324,10)
+    64.5
+    >>> valor_total(Codigo.C7623,7)
+    45.15
+    '''
+    if codigo == Codigo.C1001:
+        total: float = quantia * 
