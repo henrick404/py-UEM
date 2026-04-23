@@ -79,15 +79,17 @@ def sinal(numero: int) -> Valor:
 
 from enum import Enum, auto
 
+
 class Codigo(Enum):
-    C1001 = Auto()
-    C1324 = Auto()
-    C6548 = Auto()
-    C2987 = Auto()
-    C7623 = Auto()
+    C1001 = auto()
+    C1324 = auto()
+    C6548 = auto()
+    C2987 = auto()
+    C7623 = auto()
+
 
 def valor_total(codigo: Codigo, quantia: int) -> float:
-    '''
+    """
     Calcula o valor de uma compra com base no preço do produto e com base na *quantia*
     Exemplos:
     >>> valor_total(Codigo.C1001,5)
@@ -96,6 +98,13 @@ def valor_total(codigo: Codigo, quantia: int) -> float:
     64.5
     >>> valor_total(Codigo.C7623,7)
     45.15
-    '''
-    if codigo == Codigo.C1001:
-        total: float = quantia * 
+    """
+    if codigo == Codigo.C1001 or Codigo.C2987:
+        total: float = quantia * 5.32
+    elif codigo == Codigo.C1324 or Codigo.C7623:
+        total: float = quantia * 6.45
+    else:
+        total: float = quantia * 2.37
+
+    return total
+#----------------------------------------------------- 
