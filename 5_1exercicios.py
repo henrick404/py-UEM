@@ -1,4 +1,4 @@
-# Analise
+#1 Analise
 # descobrir o peso ideal com base nas informações recebidas
 # Tipos de dados
 # dados a receber: sexo em tipo genero, e altura em float
@@ -35,6 +35,7 @@ def peso_ideal(sexo: Genero, altura: float) -> float:
     return round(peso, 1)
 
 #-------------------------------------------------
+#2
 # Analise
 # Descobrir se um número é positivo, negativo ou nulo
 # Tipos de dados
@@ -71,6 +72,7 @@ def sinal(numero: int) -> Valor:
     return sinal
 
 # -------------------------------------------------
+#3
 # Analise
 # Descobrir o valor total de uma compra
 # Tipos de dados
@@ -108,3 +110,41 @@ def valor_total(codigo: Codigo, quantia: int) -> float:
 
     return total
 #----------------------------------------------------- 
+#4
+from enum import Enum, auto
+from dataclasses import dataclass
+
+
+class Conceito(Enum):
+    A = auto()
+    B = auto()
+    C = auto()
+    D = auto()
+
+
+@dataclass
+class Desempenho:
+    media: float
+    conceito: Conceito
+
+
+def media_aluno(
+    nota1: float, peso1: int, nota2: float, peso2: int, nota3: float, peso3: int
+) -> Desempenho:
+    
+
+    saida: Desempenho = Desempenho(
+        ((nota1 * peso1 + nota2 * peso2 + nota3 * peso3) / 3), Conceito.D
+    )
+
+    if saida.media > 8.0:
+        saida.conceito = Conceito.A
+    elif saida.media > 7.0:
+        saida.conceito = Conceito.B
+    elif saida.media > 5.0:
+        saida.conceito = Conceito.C
+
+    return saida
+
+
+# --------------------------------
