@@ -147,4 +147,88 @@ def media_aluno(
     return saida
 
 
-# --------------------------------
+# ----------------------------------------------
+from enum import Enum, auto
+from dataclasses import dataclass
+
+
+class Saida(Enum):
+    QUADRANTE1 = auto()
+    QUADRANTE2 = auto()
+    QUADRANTE3 = auto()
+    QUADRANTE4 = auto()
+    EIXO_X = auto()
+    EIXO_Y = auto()
+    ORIGEM = auto()
+
+
+@dataclass
+class Cordenadas:
+    x: int
+    y: int
+
+
+def determina_posicao(posicao: Cordenadas) -> Saida:
+    """
+    determina o quadrante com base na *posicao* passada
+    Exemplos:
+    >>> determina_posicao(Cordenadas(1,1)).name
+    'QUADRANTE1'
+    >>> determina_posicao(Cordenadas(0,0)).name
+    'ORIGEM'
+    >>> determina_posicao(Cordenadas(-1,-1)).name
+    'QUADRANTE3'
+    >>> determina_posicao(Cordenadas(0,1)).name
+    'EIXO_Y'
+    """
+    x: int = posicao.x
+    y: int = posicao.y
+    if x == 0 and y == 0:
+        retorno: Saida = Saida.ORIGEM
+    elif x == 0 and y != 0:
+        retorno: Saida = Saida.EIXO_Y
+    elif x != 0 and y == 0:
+        retorno: Saida = Saida.EIXO_X
+    elif x > 0 and y > 0:
+        retorno: Saida = Saida.QUADRANTE1
+    elif x < 0 and y > 0:
+        retorno: Saida = Saida.QUADRANTE2
+    elif x < 0 and y < 0:
+        retorno: Saida = Saida.QUADRANTE3
+    else:
+        retorno: Saida = Saida.QUADRANTE4
+
+    return retorno
+#------------------------------------------------
+from dataclasses import dataclass
+
+@dataclass
+class Saida:
+    numero_raizes: int
+    x1: float
+    x2: float
+
+
+def delta(a: int, b: int, c: int) -> int:
+    """
+    calcula o delta com base em *a*, *b* e *c*
+    """
+    return (b**2) - (4 * a * c)
+
+
+def raizes(a: int, b: int, c: int) -> Saida:
+
+    valor_delta: int = delta(a, b, c)
+    if valor_delta < 0:
+        retorno: Saida = Saida(0, 0, 0)
+    elif valor_delta == 0:
+        raiz: float = round(-b / (2 * a), 2)
+        retorno: Saida = Saida(1, raiz, 0)
+    else:
+        raiz1: float = round((-b + valor_delta**0.5) / (2 * a), 2)
+        raiz2: float = round((-b - valor_delta**0.5) / (2 * a), 2)
+        retorno: Saida = Saida(2, raiz1, raiz2)
+    return retorno
+
+
+# ------------------------------------------------
