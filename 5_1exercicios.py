@@ -241,16 +241,13 @@ def raizes(a: int, b: int, c: int) -> Saida:
 
 from dataclasses import dataclass
 
-
 @dataclass
 class Tempo:
     """
     Guarda um horário
     """
-
     horas: int
     minutos: int
-
 
 def duracao(inicio: Tempo, final: Tempo) -> Tempo:
     """
@@ -268,7 +265,7 @@ def duracao(inicio: Tempo, final: Tempo) -> Tempo:
     Tempo(horas=23, minutos=59)
     """
     diferenca: Tempo = Tempo(0, 0)
-    
+
     if inicio.horas <= final.horas:
         diferenca.horas = (inicio.horas - final.horas) * (-1)
     else:
@@ -285,3 +282,6 @@ def duracao(inicio: Tempo, final: Tempo) -> Tempo:
 # alteração do from dataclass para from dataclasses
 # adição do @dataclass que não estava
 # alteração dos exemplos para não dar conflito  de decimal
+# Revisão
+# nada a ser melhorado
+#------------------------------------------------------------
