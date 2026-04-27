@@ -232,3 +232,56 @@ def raizes(a: int, b: int, c: int) -> Saida:
 
 
 # ------------------------------------------------
+# Analise
+# Descobrir o tempo de duraçãqo de um jogo com base no inicio e termino dele
+# Definição Tipos
+# Recebimento dos valores horas de inicio e termino e os minutos tambem
+# de inicio e termino, todos do tipo inteiro.
+# saida: o tempo de duração em horas e minutos em inteiro
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Tempo:
+    """
+    Guarda um horário
+    """
+
+    horas: int
+    minutos: int
+
+
+def duracao(inicio: Tempo, final: Tempo) -> Tempo:
+    """
+    Receba o *início* de um jogo e o *final* do jogo e calcula o tempo de duração
+    do jogo (horas e minutos) sabendo-se que o tempo máximo de duração do jogo é
+    de 24 horas e que o jogo pode iniciar em um dia e terminar no dia seguinte.
+    Exemplos:
+    >>> duracao(Tempo(1,20),Tempo(2,20))
+    Tempo(horas=1, minutos=0)
+    >>> duracao(Tempo(19,20),Tempo(2,30))
+    Tempo(horas=7, minutos=10)
+    >>> duracao(Tempo(0,20),Tempo(0,40))
+    Tempo(horas=0, minutos=20)
+    >>> duracao(Tempo(0,0),Tempo(23,59))
+    Tempo(horas=23, minutos=59)
+    """
+    diferenca: Tempo = Tempo(0, 0)
+    
+    if inicio.horas <= final.horas:
+        diferenca.horas = (inicio.horas - final.horas) * (-1)
+    else:
+        diferenca.horas = 24 - (inicio.horas - final.horas)
+
+    if inicio.minutos <= final.minutos:
+        diferenca.minutos = (inicio.minutos - final.minutos) * (-1)
+    else:
+        diferenca.minutos = 60 - (inicio.minutos - final.minutos)
+
+    return diferenca
+
+# Verificacao
+# alteração do from dataclass para from dataclasses
+# adição do @dataclass que não estava
+# alteração dos exemplos para não dar conflito  de decimal
